@@ -12,19 +12,19 @@
   <% end %>
 
   <div class="field form-group">
-    <%= form.date_field :date, class:"form-control-sm", placeholder:"id_no"  %>
+    <%= form.date_field :date, class:"form-control-sm", placeholder:"Date", required: true %>
   </div>
 
   <br/>
 
   <div class="field form-group">
-    <%= form.time_field :time_in, class:"form-control-sm", placeholder:"Time in" %>
+    <%= form.time_field :time_in, class:"form-control-sm", placeholder:"Time in", required: true %>
   </div>
 
   <br/>
 
   <div class="field form-group">
-    <%= form.time_field :time_out, class:"form-control-sm", placeholder:"Time out" %>
+    <%= form.time_field :time_out, class:"form-control-sm", placeholder:"Time out", required: true  %>
   </div>
 
   <br/>
@@ -37,8 +37,6 @@
     <%= form.submit button_text, class:"btn btn-secondary" %>
   </div>
 <% end %>
-
-
 
 
 
