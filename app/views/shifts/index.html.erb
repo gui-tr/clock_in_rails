@@ -1,0 +1,31 @@
+
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Date</th>
+      <th>Time In</th>
+      <th>Time Out</th>
+      <th>Shift Duration</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+    <tbody>
+      <% @shifts.each do |shift| %>
+        <% if shift.user == current_user %>
+        <tr>
+          <td><%= shift.date.to_fs(:rfc822)  %></td>
+          <td><%= shift.time_in.to_fs(:time) %></td>
+          <td><%= shift.time_out.to_fs(:time) %></td>
+          <td><%= shift_duration_formatted(shift_duration_in_min(shift.time_in, shift.time_out))%></td>
+
+          <td><%= link_to 'Edit', edit_shift_path(shift) %></td>
+          <td><%= button_to "Delete", shift, method: :delete, form: { data: { turbo_confirm: "Are you sure?" }  } %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+<%= link_to "New shift", new_shift_path, class:"btn btn-dark" %>
