@@ -8,4 +8,10 @@ module ApplicationHelper
        return "Submit"
     end
   end
+
+  def date_from_parameters
+    if params[:search].present?
+      params[:search][:date]
+    end
+  end
 end

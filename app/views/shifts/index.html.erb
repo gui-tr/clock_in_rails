@@ -1,9 +1,7 @@
 <!-- Date Range Picker -->
 <div class="d-flex justify-content-end">
-  <input type="text" id="picker" class="form-control text-center" style="width: 220px" name="daterange" value="">
-    <script>
-      $('#picker').daterangepicker();
-    </script>
+  <%= render 'filter_form' %>
+  <%= javascript_include_tag "daterangepicker_initializer.js" %>
 </div> 
 <br/>
 <!---->

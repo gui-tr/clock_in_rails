@@ -5,7 +5,17 @@ class ShiftsController < ApplicationController
 
   # GET /shifts or /shifts.json
   def index
-    @shifts = Shift.all
+    # @shifts = Shift.all
+
+    #begin_of_test
+    if params[:search] && params[:search][:date].present?
+      start_date, end_date = params[:search][:date].split(' - ')
+      @shifts = Shift.having_date_between(start_date, end_date)
+    else
+      @shifts = Shift.all
+    end
+    #end_of_test
+
   end
 
   # GET /shifts/1 or /shifts/1.json
@@ -75,4 +85,6 @@ class ShiftsController < ApplicationController
     def shift_params
       params.require(:shift).permit(:date, :time_in, :time_out, :user_id)
     end
+
+
 end
