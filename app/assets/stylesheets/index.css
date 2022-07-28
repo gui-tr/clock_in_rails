@@ -1,0 +1,9 @@
+.search-button {
+  margin-top: 5px;
+  border-radius: 0px;
+}
+
+.edit-button a {
+  color: black;
+  text-decoration: underline;
+}

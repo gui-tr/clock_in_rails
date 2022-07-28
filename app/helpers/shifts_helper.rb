@@ -1,5 +1,3 @@
-require 'nokogiri'
-
 module ShiftsHelper
 
   def shift_duration_in_min(time_in, time_out)
@@ -9,22 +7,19 @@ module ShiftsHelper
   def shift_duration_formatted(minutes)
     min = minutes % 60
     hrs = (minutes - min) / 60
-    hrs = format('%02d', hrs)
+    hrs = format('%2d', hrs)
     min = format('%02d', min)
-    "#{hrs}:#{min}"
+    "#{hrs}h#{min}min"
   end
 
-  # ---- TESTS ----
+  def total_time
+    total_worked_min = 0
 
-  # def date_picker_data
-   # file = File.read('/Users/guitrionfo/GUITRIONFO/PROG/clock_ins_rails/clock_ins/app/views/shifts/index.html.erb')
-   # doc = Nokogiri::HTML(file)
+    @shifts.each do |shift|
+      total_worked_min += shift_duration_in_min(shift[:time_in], shift[:time_out])
+    end
 
-   # doc.css('.daterangepicker .drp-selected').each do |link|
-   #   puts link.content
-  #  end
-  # end
-
-  # ---- END OF TESTS ----
+    shift_duration_formatted(total_worked_min)
+  end
 
 end
